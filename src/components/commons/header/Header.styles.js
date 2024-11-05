@@ -1,13 +1,13 @@
 import styled from "@emotion/styled";
 
-export const HeaderWrapper = styled.div`
+export const Header__Wrapper = styled.div`
   width: 100%;
 
   display: flex;
   flex-direction: column;
 `;
 
-export const HeaderLogo = styled.div`
+export const Header__Logo = styled.div`
   width: 100%;
   height: 50px;
   padding-left: 20px;
@@ -19,7 +19,7 @@ export const HeaderLogo = styled.div`
   background-color: #303030;
 `;
 
-export const HeaderMenuContainer = styled.div`
+export const Header__MenuContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -32,14 +32,14 @@ export const HeaderMenuContainer = styled.div`
   background-color: #273469;
 `;
 
-export const HeaderMenu = styled.div`
+export const Header__Menu = styled.div`
   display: flex;
   flex-direction: row;
 
   gap: 10px;
 `;
 
-export const HeaderMenuElement = styled.div`
-  font-size: 36px;
+export const Header__MenuElement = styled.div`
+  font-size: 28px;
   color: white;
 `;

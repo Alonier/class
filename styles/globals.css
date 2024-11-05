@@ -35,6 +35,11 @@ a {
   text-decoration: none;
 }
 
+.Wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

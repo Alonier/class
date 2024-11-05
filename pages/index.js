@@ -1,8 +1,6 @@
-import HeaderUI from "../src/commons/header/Header.presenter";
+import IndexLogic from "../src/components/units/index/Index.container";
 
 export default function IndexPage() {
-  //JS Section
-
   //HTML Section
-  return <HeaderUI></HeaderUI>;
+  return <IndexLogic></IndexLogic>;
 }
