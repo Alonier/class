@@ -10,6 +10,10 @@ export const Index__Wrapper = styled.div`
   padding: 20px 300px;
 `;
 
+export const Index__Form = styled.form`
+  width: 100%;
+`;
+
 export const Index__FileInput = styled.div`
   width: 100%;
   height: 200px;
