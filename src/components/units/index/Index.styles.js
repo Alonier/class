@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Button, Table } from "antd";
 
 export const Index__Wrapper = styled.div`
   display: flex;
@@ -52,9 +53,52 @@ export const Index__Statistics__container = styled.div`
   gap: 20px;
 `;
 
-export const Index__Statistics__element__IC = styled.div`
+export const Index__Statistics__element = styled.div`
   width: 400px;
-  height: 900px;
+  padding: 10px;
 
-  background-color: red;
+  background-color: #354480;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`;
+
+export const Index__Element__Subtitle = styled.div`
+  color: white;
+  font-size: 28px;
+  width: 100%;
+  text-align: center;
+`;
+
+export const Index__Element_BtnContainer = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+`;
+
+export const Index__StyledButton = styled(Button)``;
+
+export const Index__Table = styled(Table)`
+  .ant-table {
+    background-color: transparent !important;
+    border: 1px solid black;
+  }
+  .ant-table-thead > tr > th {
+    background-color: transparent !important;
+    border-radius: 0 !important;
+    border-bottom: 2px solid black;
+  }
+  .ant-table-tbody > tr > td {
+    background-color: transparent;
+    border-bottom: 1px solid black;
+  }
+
+  .ant-table-thead th.ant-table-cell::before {
+    content: "";
+    width: 0px;
+    height: 0% !important;
+  }
 `;
