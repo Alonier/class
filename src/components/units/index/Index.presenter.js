@@ -53,7 +53,7 @@ export default function IndexUI(props) {
         </Index__FileInput>
         <Index__FileHidden
           type="file"
-          accept=".json"
+          // accept=".json"
           id="input-file"
           onChange={props.hfc}
         ></Index__FileHidden>

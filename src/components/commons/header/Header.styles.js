@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Menu } from "antd";
 
 export const Header__Wrapper = styled.div`
   width: 100%;
@@ -40,6 +41,19 @@ export const Header__Menu = styled.div`
 `;
 
 export const Header__MenuElement = styled.div`
-  font-size: 28px;
+  font-size: 1em;
   color: white;
+`;
+
+export const Header__styledMenu = styled(Menu)`
+  background-color: transparent;
+  width: 200px;
+  .ant-menu-item {
+    color: white;
+    font-weight: 700;
+  }
+
+  .ant-menu-item-active {
+    color: #777777 !important;
+  }
 `;

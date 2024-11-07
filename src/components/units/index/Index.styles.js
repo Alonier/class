@@ -8,7 +8,7 @@ export const Index__Wrapper = styled.div`
 
   background-color: #30343f;
 
-  padding: 20px 300px;
+  padding: 20px 15vw;
 `;
 
 export const Index__Form = styled.form`
@@ -18,7 +18,7 @@ export const Index__Form = styled.form`
 export const Index__FileInput = styled.div`
   width: 100%;
   height: 200px;
-  min-width: 400px;
+  min-width: 200px;
 
   border: 1px soild black;
   border-radius: 5px;
