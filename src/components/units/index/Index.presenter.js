@@ -60,7 +60,7 @@ export default function IndexUI(props) {
   //HTML Section
   return (
     <Index__Wrapper>
-      <Index__Form onSubmit={props.hs}>
+      <Index__Form>
         <Index__FileInput as="label" htmlFor="input-file">
           Input .run File Here!
         </Index__FileInput>
