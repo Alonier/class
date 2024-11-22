@@ -1,5 +1,6 @@
+src/components/units/index/IndexContainer.js
 import IndexUI from "./IndexPresenter";
-import axiosInstance from "../../../utils/axiosInstance";
+import axios from "axios";
 import { useState, useEffect } from "react";
 
 export default function IndexLogic() {
@@ -12,48 +13,40 @@ export default function IndexLogic() {
   const [LChar, setLChar] = useState(0);
   const [RChar, setRChar] = useState(0);
 
+  //백엔드 연결 확인
+
   // 파일 서비스
-  const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
+  const handleFileChange = async (event) => {
+    const selectedFile = event.target.files[0];
+    setFile(selectedFile);
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    //예외처리
-    if (!file) {
-      alert("파일이 입력되지 않았습니다.");
-      return;
-    }
-
+  const uploadFile = async () => {
     const formData = new FormData();
     formData.append("file", file);
 
-    // 서버에 파일 전송 요청
-    //   try {
-    //     const response = await fetch('/upload', {
-    //         method: 'POST',
-    //         body: formData
-    //     });
-
-    //     if (response.ok) {
-    //         const result = await response.json();
-    //         console.log('Upload Success:', result);
-    //         alert('File uploaded successfully');
-    //     } else {
-    //         console.error('Upload Failed:', response.statusText);
-    //         alert('File upload failed');
-    //     }
-    // } catch (error) {
-    //     console.error('Error:', error);
-    //     alert('An error occurred while uploading the file');
-    // }
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/api/runfile/upload",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+      alert("성공");
+    } catch (err) {
+      alert("실패");
+      console.error(err);
+    }
   };
 
-  //File이 변경될 때 호출, file console.log 로 띄우기
+  //File이 변경될 때 호출, file axios 로 server에 전송하기
   useEffect(() => {
     if (file) {
       console.log("File selected: ", file);
+      uploadFile();
     }
   }, [file]);
   // 파일 서비스
@@ -104,11 +97,8 @@ export default function IndexLogic() {
   //HTML Section
   return (
     <IndexUI
-      hs={handleSubmit}
       hfc={handleFileChange}
-      // setlb={setLBGC}
       lb={LBGC}
-      // setrb={setRBGC}
       rb={RBGC}
       setlchar={setLChar}
       setrchar={setRChar}
