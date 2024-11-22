@@ -1,4 +1,3 @@
-src/components/units/index/IndexContainer.js
 import IndexUI from "./IndexPresenter";
 import axios from "axios";
 import { useState, useEffect } from "react";
