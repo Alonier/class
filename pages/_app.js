@@ -1,5 +1,5 @@
 import { Router } from "next/router";
-import HeaderUI from "../src/components/commons/header/Header.container";
+import HeaderUI from "../src/components/commons/header/HeaderContainer";
 import "../styles/globals.css";
 
 export default function App({ Component, pageProps }) {

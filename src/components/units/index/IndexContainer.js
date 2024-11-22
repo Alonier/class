@@ -1,5 +1,5 @@
-import IndexUI from "./Index.presenter";
-import axiosInstance from "../../../../src/utils/axiosInstance";
+import IndexUI from "./IndexPresenter";
+import axiosInstance from "../../../utils/axiosInstance";
 import { useState, useEffect } from "react";
 
 export default function IndexLogic() {

@@ -5,7 +5,7 @@ import {
   Header__MenuElement,
   Header__Wrapper,
   Header__styledMenu,
-} from "./Header.styles";
+} from "./HeaderStyles";
 import {
   AppstoreOutlined,
   MailOutlined,
@@ -13,43 +13,10 @@ import {
 } from "@ant-design/icons";
 import { useState } from "react";
 
-const items = [
-  {
-    label: "User",
-    key: "User",
-    // icon: <MailOutlined />,
-  },
-  {
-    label: "Global",
-    key: "Global",
-    // icon: <MailOutlined />,
-  },
-  {
-    label: "DB",
-    key: "DB",
-    // icon: <MailOutlined />,
-  },
-];
 
-const items2 = [
-  {
-    label: "Log in",
-    key: "Login",
-    // icon: <MailOutlined />,
-  },
-  {
-    label: "Settings",
-    key: "Settings",
-    // icon: <MailOutlined />,
-  },
-];
 
-export default function HeaderUI() {
-  const [current, setCurrent] = useState("mail");
-  const onClick = (e) => {
-    console.log("click ", e);
-    setCurrent(e.key);
-  };
+export default function HeaderUI(props) {
+  
 
   return (
     <Header__Wrapper>
@@ -65,14 +32,12 @@ export default function HeaderUI() {
           <Header__MenuElement>Settings</Header__MenuElement>
         </Header__Menu> */}
         <Header__styledMenu
-          selectedKeys={[current]}
           mode="horizontal"
-          items={items}
+          items={props.itemsLeft}
         />
         <Header__styledMenu
-          selectedKeys={[current]}
           mode="horizontal"
-          items={items2}
+          items={props.itemsRight}
         />
       </Header__MenuContainer>
     </Header__Wrapper>

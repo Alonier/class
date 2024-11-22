@@ -10,7 +10,7 @@ import {
   Index__Element__Subtitle,
   Index__Element_BtnContainer,
   Index__StyledButton,
-} from "./Index.styles";
+} from "./IndexStyles";
 
 const columns = [
   {
