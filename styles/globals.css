@@ -38,6 +38,8 @@ a {
 .Wrapper {
   display: flex;
   flex-direction: column;
+  background-color: #30343f;
+  min-height: 1200px;
 }
 
 @media (prefers-color-scheme: dark) {

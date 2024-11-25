@@ -6,7 +6,6 @@ export const Index__Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
 
-  background-color: #30343f;
 
   padding: 20px 15vw;
 `;

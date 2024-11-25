@@ -25,6 +25,7 @@ width: 100%;
 export const Usercell_header_info = styled.div`
   display: flex;
   flex-direction: row;
+  gap: 5px;
 `
 
 export const Usercell_header_button = styled.div`

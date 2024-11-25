@@ -20,10 +20,10 @@ import {Usercell__Wrapper,
         </Usercell_header>
         <Usercell_section className = "Usercell_section">
         <Usercell_relic>
-        <div>relics: {props.finalRelics.map((element) => element+", ")}</div>
+        <div>relics<br></br> {props.finalRelics.map((element) => element+", ")}</div>
         </Usercell_relic>
         <Usercell_card>
-          <div>cards: {props.finalCards.map((element) => element + ", ")}</div>
+          <div>cards<br></br> {props.finalCards.map((element) => element + ", ")}</div>
         </Usercell_card>
         </Usercell_section>
       </Usercell__Wrapper>
