@@ -26,7 +26,7 @@ export default function IndexLogic() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/runfile/upload",
+        "http://localhost:8080/api/runfile/upload/1",
         formData,
         {
           headers: {

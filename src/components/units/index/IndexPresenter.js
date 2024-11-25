@@ -81,7 +81,7 @@ export default function IndexUI(props) {
               // 함수 하나로 setlb, setData 처리 예정
               onClick={() => props.setlchar(0)}
             >
-                IronClad
+                IronClad
             </Index__StyledButton>
             <Index__StyledButton
               style={{ backgroundColor: "#3B820E" }}

@@ -83,5 +83,6 @@ export const User__Main__cellList = styled.div`
   display: flex;
   flex-direction: column;
 
+  margin-top: 10px;
   gap: 10px;
 `;

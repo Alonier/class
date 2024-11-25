@@ -47,31 +47,31 @@ export function UserUI(props) {
       <User__btnContainer>
         <Main__StyledButton
           style={{ backgroundColor: "#831317" }}
-          onClick={() => props.setCharacter(0)}
+          onClick={() => props.setCharacter("IRONCLAD")}
         >
           IronClad
         </Main__StyledButton>
         <Main__StyledButton
           style={{ backgroundColor: "#3B820E" }}
-          onClick={() => props.setCharacter(1)}
+          onClick={() => props.setCharacter("SILENT")}
         >
           Silent
         </Main__StyledButton>
         <Main__StyledButton
           style={{ backgroundColor: "#5E3A77" }}
-          onClick={() => props.setCharacter(2)}
+          onClick={() => props.setCharacter("DEFECT")}
         >
           Defect
         </Main__StyledButton>
         <Main__StyledButton
           style={{ backgroundColor: "#13557E" }}
-          onClick={() => props.setCharacter(3)}
+          onClick={() => props.setCharacter("WATCHER")}
         >
           Watcher
         </Main__StyledButton>
         <Main__StyledButton
           style={{ backgroundColor: "#1F211D" }}
-          onClick={() => props.setCharacter(4)}
+          onClick={() => props.setCharacter("ALL")}
         >
           All
         </Main__StyledButton>
@@ -94,7 +94,8 @@ export function UserUI(props) {
           ></User__Main__styledTable>
         </User__Main__Header>
         <User__Main__cellList>
-          {props.playData.map((data) => {
+          Recent Games
+          {props.curCellData?.map((data) => {
             return <UsercellLogic data={data}></UsercellLogic>;
           })}
         </User__Main__cellList>
