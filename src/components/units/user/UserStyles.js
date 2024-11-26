@@ -42,42 +42,6 @@ export const User__Main__Header__Name = styled.div``;
 
 export const User__Main__Header__Playcount = styled.div``;
 
-export const User__Main__styledTable = styled(Table)`
-  //맨 위쪽 줄
-  ::before {
-    width: 100%;
-    height: 1px;
-    content: "";
-    border-top: 2px solid black;
-    transform: translateY(2px);
-  }
-  .ant-table {
-    background-color: transparent !important;
-    border: 0px solid black;
-  }
-
-  .ant-table-thead > tr > th {
-    background-color: transparent !important;
-    border-radius: 0 !important;
-    border-bottom: 2px solid black;
-  }
-  .ant-table-tbody > tr > td {
-    background-color: transparent;
-    border-bottom: 1px solid black;
-  }
-
-  .ant-table-cell {
-    /* color: white !important; */
-    text-shadow: 0.4px 0.4px #111111;
-  }
-  //셀 나누는 칸
-  .ant-table-thead th.ant-table-cell::before {
-    content: "";
-    width: 0px;
-    height: 0% !important;
-  }
-`;
-
 export const User__Main__cellList = styled.div`
   width: 100%;
   display: flex;
@@ -85,4 +49,11 @@ export const User__Main__cellList = styled.div`
 
   margin-top: 10px;
   gap: 10px;
+`;
+
+export const User__Main__cellList__subtitle = styled.div`
+  font-size: 1.5em;
+  font-weight: 700;
+
+  margin-bottom: 10px;
 `;

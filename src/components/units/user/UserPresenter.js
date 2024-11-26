@@ -7,32 +7,9 @@ import {
   User__Main__Header,
   User__Main__Header__Name,
   User__Main__Header__Playcount,
-  User__Main__styledTable,
   User__Main__cellList,
+  User__Main__cellList__subtitle,
 } from "./UserStyles.js";
-
-const columns = [
-  {
-    title: "Winning Rate",
-    dataIndex: "win_rate",
-    key: "win_rate",
-  },
-  {
-    title: "Minimum time",
-    dataIndex: "min_time",
-    key: "min_time",
-  },
-  {
-    title: "Highest Ascension",
-    dataIndex: "max_ascension",
-    key: "max_ascension",
-  },
-  {
-    title: "Best Score",
-    dataIndex: "best_score",
-    key: "best_score",
-  },
-];
 
 export function UserUI(props) {
   return (
@@ -78,17 +55,13 @@ export function UserUI(props) {
             {/* get api/users/{userID}.records[N].win / lose */}
             30승 123패
           </User__Main__Header__Playcount>
-          <User__Main__styledTable
-            columns={columns}
-            dataSource={props.UserData}
-            pagination={false}
-            rowHoverable={false}
-          ></User__Main__styledTable>
         </User__Main__Header>
         <User__Main__cellList>
-          Recent Games
-          {props.curCellData?.map((data) => {
-            return <UsercellLogic data={data}></UsercellLogic>;
+          <User__Main__cellList__subtitle>
+            Recent Games
+          </User__Main__cellList__subtitle>
+          {props.curCellData?.map((data, index) => {
+            return <UsercellLogic data={data} key={index}></UsercellLogic>;
           })}
         </User__Main__cellList>
       </User__Main__Wrapper>

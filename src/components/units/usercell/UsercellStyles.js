@@ -7,9 +7,8 @@ export const Usercell__Wrapper = styled.div`
 `;
 
 export const Usercell_header = styled.div`
-width: 100%;
-  background-color: #777777;
-  opacity:0.9;
+  width: 100%;
+  background-color: #eeeeee;
   border-radius: 10px;
 
   padding: 5px 10px;
@@ -17,35 +16,42 @@ width: 100%;
   display: flex;
   flex-direction: column;
 
-  display:flex;
+  display: flex;
   flex-direction: row;
-  justify-content: space-between
-`
+  justify-content: space-between;
+`;
 
 export const Usercell_header_info = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 5px;
-`
+`;
+
+export const Usercell_header_info_isVictory = styled.div`
+  font-weight: 700;
+  font-size: 1.3em;
+`;
 
 export const Usercell_header_button = styled.div`
-  cursor:pointer;
+  cursor: pointer;
   padding: 0 5px;
-
-  transition: all 0.2s ease-in-out;
-`
+`;
 
 export const Usercell_section = styled.div`
-width: 100%;
-  background-color: #777777;
-  opacity:0.9;
+  width: 100%;
+  background-color: #eeeeee;
   border-radius: 10px;
 
   padding: 5px 10px;
 
   display: none;
   flex-direction: column;
-`
+`;
+
+export const Usercell_section_subtitle = styled.div`
+  font-size: 1.2em;
+`;
+
 export const Usercell_relic = styled.div`
   display: flex;
   flex-direction: column;
