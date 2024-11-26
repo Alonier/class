@@ -14,32 +14,25 @@ import {
 const columns = [
   {
     title: "Winning Rate",
-    dataIndex: "WinningRate",
-    key: "WinningRate",
-  },
-  {
-    title: "most winning streak",
-    dataIndex: "MWStreak",
-    key: "MWStreak",
+    dataIndex: "win_rate",
+    key: "win_rate",
   },
   {
     title: "Minimum time",
-    dataIndex: "MTime",
-    key: "MTime",
+    dataIndex: "min_time",
+    key: "min_time",
   },
   {
     title: "Highest Ascension",
-    dataIndex: "MaxAscensionLevel",
-    key: "HighestAscension",
+    dataIndex: "max_ascension",
+    key: "max_ascension",
   },
   {
     title: "Best Score",
-    dataIndex: "BestScore",
-    key: "BestScore",
+    dataIndex: "best_score",
+    key: "best_score",
   },
 ];
-
-
 
 export function UserUI(props) {
   return (
@@ -79,8 +72,7 @@ export function UserUI(props) {
       <User__Main__Wrapper>
         <User__Main__Header>
           <User__Main__Header__Name>
-            {/* get api/users{userID}.username */}
-            송하일런트를 능가하는 엄이언 클레드
+            {props.curStatData?.name}
           </User__Main__Header__Name>
           <User__Main__Header__Playcount>
             {/* get api/users/{userID}.records[N].win / lose */}
