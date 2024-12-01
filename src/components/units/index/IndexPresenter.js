@@ -56,6 +56,7 @@ const Data2 = [
 
 export default function IndexUI(props) {
   //JS Section
+  const Character_array = ["Ironclad","Silent","Defect","Watcher"];
 
   //HTML Section
   return (
@@ -66,15 +67,17 @@ export default function IndexUI(props) {
         </Index__FileInput>
         <Index__FileHidden
           type="file"
-          accept=".json"
           id="input-file"
           onChange={props.hfc}
+          multiple
         ></Index__FileHidden>
       </Index__Form>
       <Index__Title_Stat>Statistics Online</Index__Title_Stat>
       <Index__Statistics__container>
         <Index__Statistics__element style={{ backgroundColor: props.lb }}>
-          <Index__Element__Subtitle>Card PickRate</Index__Element__Subtitle>
+          <Index__Element__Subtitle>
+            {Character_array[props.LChar]} Card PickRate
+            </Index__Element__Subtitle>
           <Index__Element_BtnContainer>
             <Index__StyledButton
               style={{ backgroundColor: "#831317" }}
@@ -127,14 +130,15 @@ export default function IndexUI(props) {
           ></Index__Table>
         </Index__Statistics__element>
         <Index__Statistics__element style={{ backgroundColor: props.rb }}>
-          <Index__Element__Subtitle>Card WinRate</Index__Element__Subtitle>
+          <Index__Element__Subtitle>
+          {Character_array[props.RChar]} Card WinRate</Index__Element__Subtitle>
           <Index__Element_BtnContainer>
             <Index__StyledButton
               style={{ backgroundColor: "#831317" }}
               // 함수 하나로 setlb, setData 처리 예정
               onClick={() => props.setrchar(0)}
             >
-                IronClad
+                IronClad
             </Index__StyledButton>
             <Index__StyledButton
               style={{ backgroundColor: "#3B820E" }}

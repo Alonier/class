@@ -12,6 +12,8 @@ export default function IndexLogic() {
   const [LChar, setLChar] = useState(0);
   const [RChar, setRChar] = useState(0);
 
+  const[data,setData] = useState({records:[]});
+
   //백엔드 연결 확인
 
   // 파일 서비스
@@ -41,20 +43,29 @@ export default function IndexLogic() {
     }
   };
 
+  const fetchData = async () => {
+    try {
+      //현재 유저 id 1로 고정
+      const response = await axios.get(
+        "http://localhost:8080/api/global/card?color="
+      );
+        
+      console.log(response.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  
   //File이 변경될 때 호출, file axios 로 server에 전송하기
   useEffect(() => {
     if (file) {
-      console.log("File selected: ", file);
+      // console.log("File selected: ", file);
       uploadFile();
     }
   }, [file]);
-  // 파일 서비스
+  
 
-  //데이터 로딩
-  // axiosInstance.get("").then((res) => {});
-
-  //데이터, 배경 연결
-  //왼쪽
   useEffect(() => {
     switch (LChar) {
       case 0:
@@ -93,6 +104,10 @@ export default function IndexLogic() {
     }
   }, [RChar]);
 
+  useEffect(()=>{
+    fetchData();
+  },[]);
+
   //HTML Section
   return (
     <IndexUI
@@ -101,6 +116,8 @@ export default function IndexLogic() {
       rb={RBGC}
       setlchar={setLChar}
       setrchar={setRChar}
+      LChar = {LChar}
+      RChar = {RChar}
     ></IndexUI>
   );
 }

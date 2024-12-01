@@ -27,28 +27,89 @@ export const Main__StyledButton = styled(Button)`
   color: #d4ad47;
 
   border-radius: 8px 8px 0px 0px;
+
+
 `;
 
 export const User__Main__Wrapper = styled.div`
   width: 100%;
+  /* min-width: 800px; */
+
   padding: 20px 20px;
 
   background-color: #831317;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  border-radius: 0px 8px 8px 8px;
 `;
 
-export const User__Main__Header = styled.div``;
+export const User__Main__Header = styled.div`
+  width: 100%;
+`;
 
-export const User__Main__Header__Name = styled.div``;
+export const User__Main__Header__Name = styled.div`
+width:100%;
+  font-size: 24px;
+  font-weight: 700;
+`;
 
-export const User__Main__Header__Playcount = styled.div``;
+export const User__Main__Section = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items:flex-start;
+
+  gap: 10px;
+  width:100%;
+  /* min-width: 760px; */
+  margin-top: 30px;
+
+  @media screen and (max-width: 800px){
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+export const User__Main__Section__StatisticList = styled.div`
+  width: 360px;
+  padding: 10px;
+  display:flex;
+  flex-direction: column;
+
+  margin-top: 10px;
+
+  background-color: #ffffff;
+  
+`
+
+export const User__Name = styled.div`
+  position: absolute;
+  transform:translateY(-52px) translateX(-11px);
+  
+  font-size:32px;
+`
+
+export const User__Main__Section__StatisticElement = styled.div`
+  
+`
 
 export const User__Main__cellList = styled.div`
-  width: 100%;
+  width: 700px;
+  padding: 10px 30px;
   display: flex;
   flex-direction: column;
 
   margin-top: 10px;
   gap: 10px;
+  
+  background-color: #ffffff;
+
+  @media screen and (max-width: 800px){
+    width:340px;
+  }
 `;
 
 export const User__Main__cellList__subtitle = styled.div`

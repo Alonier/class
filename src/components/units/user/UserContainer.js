@@ -74,26 +74,10 @@ export function UserLogic() {
     filterStatData();
   }, [character, cellData, statData]);
 
-  const UserData = [
-    {
-      key: 1,
-      /* get api/users{userID}.character[N].win / lose 로 구현 */
-      WinningRate: 21.5,
-      /* get api/users{userID}.character[N].most_winning_streak */
-      MWStreak: 4,
-      /* get api/users{userID}.character[N].minimum_time */
-      MTime: "21:05",
-      /* get api/users{userID}.character[N].max_ascension_level */
-      MaxAscensionLevel: 20,
-      /* get api/users{userID}.character[N].best_score */
-      BestScore: 33333,
-    },
-  ];
 
   return (
     <UserUI
       setCharacter={setCharacter}
-      UserData={UserData}
       curCellData={curCellData}
       curStatData={curStatData}
     ></UserUI>

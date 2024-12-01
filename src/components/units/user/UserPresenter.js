@@ -6,12 +6,17 @@ import {
   User__Wrapper,
   User__Main__Header,
   User__Main__Header__Name,
-  User__Main__Header__Playcount,
   User__Main__cellList,
   User__Main__cellList__subtitle,
+  User__Main__Section,
+  User__Main__Section__StatisticList,
+  User__Main__Section__StatisticElement,
+  User__Name
 } from "./UserStyles.js";
 
 export function UserUI(props) {
+  console.log(props.curStatData)
+
   return (
     <User__Wrapper>
       <User__btnContainer>
@@ -46,16 +51,25 @@ export function UserUI(props) {
           All
         </Main__StyledButton>
       </User__btnContainer>
-      <User__Main__Wrapper>
-        <User__Main__Header>
-          <User__Main__Header__Name>
+      <User__Main__Wrapper>  
+        <User__Main__Section>
+        <User__Main__Section__StatisticList>
+          <User__Name>
             {props.curStatData?.name}
-          </User__Main__Header__Name>
-          <User__Main__Header__Playcount>
-            {/* get api/users/{userID}.records[N].win / lose */}
-            30승 123패
-          </User__Main__Header__Playcount>
-        </User__Main__Header>
+          </User__Name>
+          <User__Main__Section__StatisticElement>
+            Win rate:{props.curStatData?.win_rate !== "NaN"?props.curStatData?.win_rate:" No data"}
+          </User__Main__Section__StatisticElement>
+          <User__Main__Section__StatisticElement>
+          Fastest Clear time: {props.curStatData?.min_time !== 2147483647?props.curStatData?.min_time:"No data"}
+          </User__Main__Section__StatisticElement>
+          <User__Main__Section__StatisticElement>
+          Best Score: {props.curStatData?.best_score!== 0?props.curStatData?.best_score:" No data"}
+          </User__Main__Section__StatisticElement>
+          <User__Main__Section__StatisticElement>
+          Max Ascension: {props.curStatData?.max_ascension}
+          </User__Main__Section__StatisticElement>
+        </User__Main__Section__StatisticList>
         <User__Main__cellList>
           <User__Main__cellList__subtitle>
             Recent Games
@@ -64,6 +78,8 @@ export function UserUI(props) {
             return <UsercellLogic data={data} key={index}></UsercellLogic>;
           })}
         </User__Main__cellList>
+        </User__Main__Section>
+        
       </User__Main__Wrapper>
     </User__Wrapper>
   );
