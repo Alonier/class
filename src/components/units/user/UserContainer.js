@@ -8,6 +8,7 @@ export function UserLogic() {
   const [curCellData, setCurCellData] = useState(null);
   const [statData, setStatData] = useState({ records: [] });
   const [curStatData, setCurStatData] = useState(null);
+  const [wrapperColor, setWrapperColor] = useState("#831317");
 
   //유저 전투 기록, 유저 통계 데이터 전부 불러오기
   const fetchData = async () => {
@@ -62,6 +63,28 @@ export function UserLogic() {
     setCurStatData(statData[param]);
   };
 
+  const setStyle = () =>{
+    let param;
+    switch(character){
+      case "ALL":
+        param = "#1F211D";
+        break;
+      case "IRONCLAD":
+        param = "#831317";
+        break;
+      case "SILENT":
+        param = "#3B820E";
+        break;
+      case "DEFECT":
+        param = "#5E3A77";
+        break;
+      case "WATCHER":
+        param = "#13557E";
+        break;
+    }
+    setWrapperColor(param);
+  }
+
   useEffect(() => {
     fetchData();
   }, []);
@@ -72,6 +95,8 @@ export function UserLogic() {
     filterCellData();
     //유저 통계 전달용 데이터 필터링 함수
     filterStatData();
+    //스타일 설정 함수
+    setStyle();
   }, [character, cellData, statData]);
 
 
@@ -80,6 +105,7 @@ export function UserLogic() {
       setCharacter={setCharacter}
       curCellData={curCellData}
       curStatData={curStatData}
+      wrapperColor={wrapperColor}
     ></UserUI>
   );
 }

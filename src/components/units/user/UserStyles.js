@@ -78,10 +78,12 @@ export const User__Main__Section__StatisticList = styled.div`
   padding: 10px;
   display:flex;
   flex-direction: column;
+  gap: 10px;
 
   margin-top: 10px;
 
   background-color: #ffffff;
+  border-radius: 5px;
   
 `
 
@@ -90,6 +92,7 @@ export const User__Name = styled.div`
   transform:translateY(-52px) translateX(-11px);
   
   font-size:32px;
+  color:#d4ad47;
 `
 
 export const User__Main__Section__StatisticElement = styled.div`
@@ -101,11 +104,12 @@ export const User__Main__cellList = styled.div`
   padding: 10px 30px;
   display: flex;
   flex-direction: column;
+  gap: 10px;
 
   margin-top: 10px;
-  gap: 10px;
   
   background-color: #ffffff;
+  border-radius:5px;
 
   @media screen and (max-width: 800px){
     width:340px;

@@ -51,14 +51,16 @@ export function UserUI(props) {
           All
         </Main__StyledButton>
       </User__btnContainer>
-      <User__Main__Wrapper>  
+      <User__Main__Wrapper
+        style={{backgroundColor:props.wrapperColor}}
+      >  
         <User__Main__Section>
         <User__Main__Section__StatisticList>
           <User__Name>
             {props.curStatData?.name}
           </User__Name>
           <User__Main__Section__StatisticElement>
-            Win rate:{props.curStatData?.win_rate !== "NaN"?props.curStatData?.win_rate:" No data"}
+            Win rate:{props.curStatData?.win_rate !== "NaN"?Math.round(props.curStatData?.win_rate*10)/10+"%":" No data"}
           </User__Main__Section__StatisticElement>
           <User__Main__Section__StatisticElement>
           Fastest Clear time: {props.curStatData?.min_time !== 2147483647?props.curStatData?.min_time:"No data"}

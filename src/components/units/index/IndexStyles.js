@@ -72,6 +72,11 @@ export const Index__Element__Subtitle = styled.div`
   text-align: center;
 `;
 
+export const Index__Element__statistics = styled.div`
+  color:white;
+  text-align:center;
+`
+
 export const Index__Element_BtnContainer = styled.div`
   width: 100%;
   display: flex;

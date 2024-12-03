@@ -10,6 +10,7 @@ import {
   Index__Element__Subtitle,
   Index__Element_BtnContainer,
   Index__StyledButton,
+  Index__Element__statistics
 } from "./IndexStyles";
 
 const columns = [
@@ -78,6 +79,9 @@ export default function IndexUI(props) {
           <Index__Element__Subtitle>
             {Character_array[props.LChar]} Card PickRate
             </Index__Element__Subtitle>
+            <Index__Element__statistics>
+              PickRate: {Math.round((props.LCharData?.[0]||0)*10)/10}% WinRate: {Math.round((props.LCharData?.[1]||0)*10)/10}%
+            </Index__Element__statistics>
           <Index__Element_BtnContainer>
             <Index__StyledButton
               style={{ backgroundColor: "#831317" }}
@@ -109,17 +113,17 @@ export default function IndexUI(props) {
             <Index__StyledButton
               style={{ backgroundColor: "#99CDF2", borderColor: "#99CDF2" }}
             >
-              Floor 1
+              Act 1
             </Index__StyledButton>
             <Index__StyledButton
               style={{ backgroundColor: "#99CDF2", borderColor: "#99CDF2" }}
             >
-              Floor 2
+              Act 2
             </Index__StyledButton>
             <Index__StyledButton
               style={{ backgroundColor: "#99CDF2", borderColor: "#99CDF2" }}
             >
-              Floor 3
+              Act 3
             </Index__StyledButton>
           </Index__Element_BtnContainer>
           <Index__Table
@@ -132,6 +136,9 @@ export default function IndexUI(props) {
         <Index__Statistics__element style={{ backgroundColor: props.rb }}>
           <Index__Element__Subtitle>
           {Character_array[props.RChar]} Card WinRate</Index__Element__Subtitle>
+          <Index__Element__statistics>
+          PickRate: {Math.round((props.RCharData?.[0]||0)*10)/10}% WinRate: {Math.round((props.RCharData?.[1]||0)*10)/10}%
+          </Index__Element__statistics>
           <Index__Element_BtnContainer>
             <Index__StyledButton
               style={{ backgroundColor: "#831317" }}

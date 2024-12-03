@@ -12,7 +12,14 @@ export default function IndexLogic() {
   const [LChar, setLChar] = useState(0);
   const [RChar, setRChar] = useState(0);
 
-  const[data,setData] = useState({records:[]});
+  const[charData, setCharData] = useState({records:[]});
+  const[LCharData,setLCharData] = useState(null);
+  const[RCharData,setRCharData] = useState(null);
+
+  const[cardData,setCardData] = useState({records:[]});
+  const[LCardData,setLCardData] = useState(null);
+  const[RCardData,setRCardData] = useState(null);
+
 
   //백엔드 연결 확인
 
@@ -46,27 +53,25 @@ export default function IndexLogic() {
   const fetchData = async () => {
     try {
       //현재 유저 id 1로 고정
-      const response = await axios.get(
-        "http://localhost:8080/api/global/card?color="
+      const responseCharacter = await axios.get(
+        "http://localhost:8080/api/global/character"
       );
         
-      console.log(response.data);
+      setCharData(responseCharacter.data);
+      console.log(responseCharacter.data);
+
+      const responseCard = await axios.get(
+        "http://localhost:8080/api/global/card"
+      );
+
+      setCardData(responseCard.data);
     } catch (err) {
       console.error(err);
     }
   };
 
-  
-  //File이 변경될 때 호출, file axios 로 server에 전송하기
-  useEffect(() => {
-    if (file) {
-      // console.log("File selected: ", file);
-      uploadFile();
-    }
-  }, [file]);
-  
-
-  useEffect(() => {
+  const setStyle = (props) =>{
+    if(props === "LChar"){
     switch (LChar) {
       case 0:
         setLBGC("#831317");
@@ -83,9 +88,8 @@ export default function IndexLogic() {
       default:
         break;
     }
-  }, [LChar]);
-  //오른쪽
-  useEffect(() => {
+  }
+  else{
     switch (RChar) {
       case 0:
         setRBGC("#831317");
@@ -102,10 +106,53 @@ export default function IndexLogic() {
       default:
         break;
     }
+  }
+  }
+
+  const setStatistics = (props) =>{
+    if(charData){
+      if(props === "LChar"){
+        setLCharData([charData[LChar+1]?.pick_rate,charData[LChar+1]?.win_rates[20].win_rate]);
+      }
+      else{
+     
+      setRCharData([charData[RChar+1]?.pick_rate,charData[RChar+1]?.win_rates[20].win_rate]);
+      }
+      console.log(LCharData, RCharData);
+    }
+  }
+  
+
+  
+  //File이 변경될 때 호출, file axios 로 server에 전송하기
+  useEffect(() => {
+    if (file) {
+      // console.log("File selected: ", file);
+      uploadFile();
+    }
+  }, [file]);
+  
+
+  useEffect(() => {
+    setStyle("LChar");
+    setStatistics("LChar");
+  }
+  , [LChar]);
+
+  //오른쪽
+  useEffect(() => {
+    setStyle("RChar");
+    setStatistics("RChar");
   }, [RChar]);
 
   useEffect(()=>{
-    fetchData();
+    fetchData().then(
+      ()=>{
+        setStatistics("LChar");
+        setStatistics("RChar");
+      }
+    );
+    
   },[]);
 
   //HTML Section
@@ -118,6 +165,8 @@ export default function IndexLogic() {
       setrchar={setRChar}
       LChar = {LChar}
       RChar = {RChar}
+      LCharData = {LCharData}
+      RCharData = {RCharData}
     ></IndexUI>
   );
 }
