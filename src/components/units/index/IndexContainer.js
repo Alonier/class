@@ -58,7 +58,7 @@ export default function IndexLogic() {
       );
         
       setCharData(responseCharacter.data);
-      console.log(responseCharacter.data);
+      // console.log(responseCharacter.data);
 
       const responseCard = await axios.get(
         "http://localhost:8080/api/global/card"
@@ -118,7 +118,7 @@ export default function IndexLogic() {
      
       setRCharData([charData[RChar+1]?.pick_rate,charData[RChar+1]?.win_rates[20].win_rate]);
       }
-      console.log(LCharData, RCharData);
+      // console.log(LCharData, RCharData);
     }
   }
   

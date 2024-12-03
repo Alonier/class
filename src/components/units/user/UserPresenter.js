@@ -15,7 +15,7 @@ import {
 } from "./UserStyles.js";
 
 export function UserUI(props) {
-  console.log(props.curStatData)
+  // console.log(props.curStatData)
 
   return (
     <User__Wrapper>
