@@ -58,6 +58,7 @@ const Data2 = [
 export default function IndexUI(props) {
   //JS Section
   const Character_array = ["Ironclad","Silent","Defect","Watcher"];
+  
 
   //HTML Section
   return (
@@ -77,7 +78,7 @@ export default function IndexUI(props) {
       <Index__Statistics__container>
         <Index__Statistics__element style={{ backgroundColor: props.lb }}>
           <Index__Element__Subtitle>
-            {Character_array[props.LChar]} Card PickRate
+            {Character_array[props.LChar]}<br></br>Card PickRate
             </Index__Element__Subtitle>
             <Index__Element__statistics>
               PickRate: {Math.round((props.LCharData?.[0]||0)*10)/10}% WinRate: {Math.round((props.LCharData?.[1]||0)*10)/10}%
@@ -109,33 +110,17 @@ export default function IndexUI(props) {
               Watcher
             </Index__StyledButton>
           </Index__Element_BtnContainer>
-          <Index__Element_BtnContainer>
-            <Index__StyledButton
-              style={{ backgroundColor: "#99CDF2", borderColor: "#99CDF2" }}
-            >
-              Act 1
-            </Index__StyledButton>
-            <Index__StyledButton
-              style={{ backgroundColor: "#99CDF2", borderColor: "#99CDF2" }}
-            >
-              Act 2
-            </Index__StyledButton>
-            <Index__StyledButton
-              style={{ backgroundColor: "#99CDF2", borderColor: "#99CDF2" }}
-            >
-              Act 3
-            </Index__StyledButton>
-          </Index__Element_BtnContainer>
+          
           <Index__Table
             columns={columns}
-            dataSource={Data}
+            dataSource={props.curPick}
             pagination={false}
             rowHoverable={false}
           ></Index__Table>
         </Index__Statistics__element>
         <Index__Statistics__element style={{ backgroundColor: props.rb }}>
           <Index__Element__Subtitle>
-          {Character_array[props.RChar]} Card WinRate</Index__Element__Subtitle>
+          {Character_array[props.RChar]} <br></br>Card WinRate</Index__Element__Subtitle>
           <Index__Element__statistics>
           PickRate: {Math.round((props.RCharData?.[0]||0)*10)/10}% WinRate: {Math.round((props.RCharData?.[1]||0)*10)/10}%
           </Index__Element__statistics>
@@ -167,25 +152,11 @@ export default function IndexUI(props) {
             </Index__StyledButton>
           </Index__Element_BtnContainer>
           <Index__Element_BtnContainer>
-            <Index__StyledButton
-              style={{ backgroundColor: "#99CDF2", borderColor: "#99CDF2" }}
-            >
-              Floor 1
-            </Index__StyledButton>
-            <Index__StyledButton
-              style={{ backgroundColor: "#99CDF2", borderColor: "#99CDF2" }}
-            >
-              Floor 2
-            </Index__StyledButton>
-            <Index__StyledButton
-              style={{ backgroundColor: "#99CDF2", borderColor: "#99CDF2" }}
-            >
-              Floor 3
-            </Index__StyledButton>
+            
           </Index__Element_BtnContainer>
           <Index__Table
             columns={columns}
-            dataSource={Data}
+            dataSource={props.curWin}
             pagination={false}
             rowHoverable={false}
           ></Index__Table>

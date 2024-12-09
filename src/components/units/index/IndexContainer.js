@@ -16,10 +16,19 @@ export default function IndexLogic() {
   const[LCharData,setLCharData] = useState(null);
   const[RCharData,setRCharData] = useState(null);
 
-  const[cardData,setCardData] = useState({records:[]});
-  const[LCardData,setLCardData] = useState(null);
-  const[RCardData,setRCardData] = useState(null);
+  const[redPick, setRedPick] = useState({records:[]});
+  const[greenPick, setGreenPick] = useState({records:[]});
+  const[bluePick, setBluePick] = useState({records:[]});
+  const[purplePick, setPurplePick] = useState({records:[]});
+  const pickArr = [redPick, greenPick, bluePick,purplePick];
 
+  const [curPick, setCurPick] = useState({});
+  const [curWin, setCurWin] = useState({});
+
+  const [LFloor, setLFloor] = useState(0);
+  const [RFloor,setRFloor] = useState(0);
+
+  
 
   //백엔드 연결 확인
 
@@ -60,11 +69,30 @@ export default function IndexLogic() {
       setCharData(responseCharacter.data);
       // console.log(responseCharacter.data);
 
-      const responseCard = await axios.get(
-        "http://localhost:8080/api/global/card"
+      const responseRedPick = await axios.get(
+        "http://localhost:8080/api/global/card?color=RED"
       );
+      setRedPick(responseRedPick.data);
+      // console.log(responseRedPick.data);
 
-      setCardData(responseCard.data);
+      const responseGreenPick = await axios.get(
+        "http://localhost:8080/api/global/card?color=GREEN"
+      );
+      setGreenPick(responseGreenPick.data);
+      // console.log(responseGreenPick.data);
+
+      const responseBluePick = await axios.get(
+        "http://localhost:8080/api/global/card?color=BLUE"
+      );
+      setBluePick(responseBluePick.data);
+      // console.log(responseBluePick.data);
+
+      const responsePurplePick = await axios.get(
+        "http://localhost:8080/api/global/card?color=PURPLE"
+      );
+      setPurplePick(responsePurplePick.data);
+      // console.log(responsePurplePick.data);
+
     } catch (err) {
       console.error(err);
     }
@@ -122,6 +150,49 @@ export default function IndexLogic() {
     }
   }
   
+  // 🔥 LChar에 따라 상위 20개 데이터 정렬 및 저장
+  const updateTopPicks = () => {
+    if (pickArr[LChar] && Array.isArray(pickArr[LChar])) {
+      const sortedData = [...pickArr[LChar]]
+        .sort((a, b) => b.total_picked_rate - a.total_picked_rate) // 🔥 total_picked_rate 내림차순 정렬
+        .slice(0, 20); // 🔥 상위 20개
+      
+      const sortedArr = sortedData.map((data,index) =>
+        ({
+          key: index+1,
+          name: data.name,
+          rate: Math.round(data.total_picked_rate * 100)/100
+        })
+      )
+
+      setCurPick(sortedArr);
+    }
+    console.log(sortedArr);
+
+  };
+
+   // 🔥 LChar에 따라 상위 20개 데이터 정렬 및 저장
+   const updateTopWins = () => {
+    if (pickArr[RChar] && Array.isArray(pickArr[RChar])) {
+      const sortedData = [...pickArr[RChar]]
+        .sort((a, b) => b.total_win_rate - a.total_win_rate) // 🔥 total_picked_rate 내림차순 정렬
+        .slice(0, 20); // 🔥 상위 20개
+      
+      const sortedArr = sortedData.map((data,index) =>
+        ({
+          key: index+1,
+          name: data.name,
+          rate: Math.round(data.total_win_rate * 100)/100
+        })
+      )
+      
+
+      setCurWin(sortedArr);
+    }
+    // console.log(sortedArr);
+
+  };
+
 
   
   //File이 변경될 때 호출, file axios 로 server에 전송하기
@@ -136,6 +207,7 @@ export default function IndexLogic() {
   useEffect(() => {
     setStyle("LChar");
     setStatistics("LChar");
+    updateTopPicks();
   }
   , [LChar]);
 
@@ -143,6 +215,7 @@ export default function IndexLogic() {
   useEffect(() => {
     setStyle("RChar");
     setStatistics("RChar");
+    updateTopWins();
   }, [RChar]);
 
   useEffect(()=>{
@@ -150,6 +223,8 @@ export default function IndexLogic() {
       ()=>{
         setStatistics("LChar");
         setStatistics("RChar");
+        updateTopPicks();
+        updateTopWins();
       }
     );
     
@@ -165,8 +240,14 @@ export default function IndexLogic() {
       setrchar={setRChar}
       LChar = {LChar}
       RChar = {RChar}
+      LFloor = {LFloor}
+      RFloor = {RFloor}
+      setLFloor = {setLFloor}
+      setRFloor = {setRFloor}
       LCharData = {LCharData}
       RCharData = {RCharData}
+      curPick = {curPick}
+      curWin = {curWin}
     ></IndexUI>
   );
 }
