@@ -22,8 +22,8 @@ export default function IndexLogic() {
   const[purplePick, setPurplePick] = useState({records:[]});
   const pickArr = [redPick, greenPick, bluePick,purplePick];
 
-  const [curPick, setCurPick] = useState({});
-  const [curWin, setCurWin] = useState({});
+  const [curPick, setCurPick] = useState([]);
+  const [curWin, setCurWin] = useState([]);
 
   const [LFloor, setLFloor] = useState(0);
   const [RFloor,setRFloor] = useState(0);
@@ -157,17 +157,17 @@ export default function IndexLogic() {
         .sort((a, b) => b.total_picked_rate - a.total_picked_rate) // 🔥 total_picked_rate 내림차순 정렬
         .slice(0, 20); // 🔥 상위 20개
       
-      const sortedArr = sortedData.map((data,index) =>
+      const sortedPick = sortedData.map((data,index) =>
         ({
           key: index+1,
           name: data.name,
-          rate: Math.round(data.total_picked_rate * 100)/100
+          rate: Math.round(data.total_picked_rate * 100)/100 + " %"
         })
       )
 
-      setCurPick(sortedArr);
+      setCurPick(sortedPick);
     }
-    console.log(sortedArr);
+    console.log(sortedPick);
 
   };
 
@@ -178,18 +178,18 @@ export default function IndexLogic() {
         .sort((a, b) => b.total_win_rate - a.total_win_rate) // 🔥 total_picked_rate 내림차순 정렬
         .slice(0, 20); // 🔥 상위 20개
       
-      const sortedArr = sortedData.map((data,index) =>
+      const sortedWin = sortedData.map((data,index) =>
         ({
           key: index+1,
           name: data.name,
-          rate: Math.round(data.total_win_rate * 100)/100
+          rate: Math.round(data.total_win_rate * 100)/100 + " %"
         })
       )
       
 
-      setCurWin(sortedArr);
+      setCurWin(sortedWin);
     }
-    // console.log(sortedArr);
+    // console.log(sortedWin);
 
   };
 
