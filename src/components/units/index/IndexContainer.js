@@ -161,7 +161,7 @@ export default function IndexLogic() {
         ({
           key: index+1,
           name: data.name,
-          rate: Math.round(data.total_picked_rate * 100)/100 + " %"
+          rate: Math.round(data.total_picked_rate * 100)/100
         })
       )
 
@@ -182,7 +182,7 @@ export default function IndexLogic() {
         ({
           key: index+1,
           name: data.name,
-          rate: Math.round(data.total_win_rate * 100)/100 + " %"
+          rate: Math.round(data.total_win_rate * 100)/100
         })
       )
       

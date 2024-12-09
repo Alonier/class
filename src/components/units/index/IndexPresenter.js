@@ -32,28 +32,6 @@ const columns = [
   },
 ];
 
-//임시 데이터 배열
-const Data = [
-  { key: "1", name: "Strike", rate: 100.0 },
-  { key: "2", name: "Streamline", rate: 24.3 },
-  { key: "3", name: "Sweeping Beam", rate: 22.1 },
-  { key: "4", name: "Cold Snap", rate: 21.1 },
-  { key: "5", name: "Go for the Eyes", rate: 18.1 },
-  { key: "6", name: "Rebound", rate: 14.1 },
-  { key: "7", name: "Beam Cell", rate: 12.1 },
-  { key: "8", name: "Ball Lightning", rate: 10.1 },
-];
-
-const Data2 = [
-  { key: "1", name: "a", rate: 100.0 },
-  { key: "2", name: "b", rate: 24.3 },
-  { key: "3", name: "c Beam", rate: 22.1 },
-  { key: "4", name: "Cold d", rate: 21.1 },
-  { key: "5", name: "Go f the g", rate: 18.1 },
-  { key: "6", name: "e", rate: 14.1 },
-  { key: "7", name: "Beam h", rate: 12.1 },
-  { key: "8", name: "Ball i", rate: 10.1 },
-];
 
 export default function IndexUI(props) {
   //JS Section
