@@ -20,7 +20,9 @@ export default function HeaderUI(props) {
 
   return (
     <Header__Wrapper>
-      <Header__Logo>Logo</Header__Logo>
+      <Header__Logo
+        href="/"
+      >Project NEOW</Header__Logo>
       <Header__MenuContainer>
         {/* <Header__Menu>
           <Header__MenuElement>menu1</Header__MenuElement>
