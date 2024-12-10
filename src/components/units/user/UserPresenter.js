@@ -6,42 +6,17 @@ import {
   User__Wrapper,
   User__Main__Header,
   User__Main__Header__Name,
-  User__Main__Header__Playcount,
-  User__Main__styledTable,
   User__Main__cellList,
+  User__Main__cellList__subtitle,
+  User__Main__Section,
+  User__Main__Section__StatisticList,
+  User__Main__Section__StatisticElement,
+  User__Name
 } from "./UserStyles.js";
 
-const columns = [
-  {
-    title: "Winning Rate",
-    dataIndex: "WinningRate",
-    key: "WinningRate",
-  },
-  {
-    title: "most winning streak",
-    dataIndex: "MWStreak",
-    key: "MWStreak",
-  },
-  {
-    title: "Minimum time",
-    dataIndex: "MTime",
-    key: "MTime",
-  },
-  {
-    title: "Highest Ascension",
-    dataIndex: "MaxAscensionLevel",
-    key: "HighestAscension",
-  },
-  {
-    title: "Best Score",
-    dataIndex: "BestScore",
-    key: "BestScore",
-  },
-];
-
-
-
 export function UserUI(props) {
+  // console.log(props.curStatData)
+
   return (
     <User__Wrapper>
       <User__btnContainer>
@@ -76,29 +51,37 @@ export function UserUI(props) {
           All
         </Main__StyledButton>
       </User__btnContainer>
-      <User__Main__Wrapper>
-        <User__Main__Header>
-          <User__Main__Header__Name>
-            {/* get api/users{userID}.username */}
-            송하일런트를 능가하는 엄이언 클레드
-          </User__Main__Header__Name>
-          <User__Main__Header__Playcount>
-            {/* get api/users/{userID}.records[N].win / lose */}
-            30승 123패
-          </User__Main__Header__Playcount>
-          <User__Main__styledTable
-            columns={columns}
-            dataSource={props.UserData}
-            pagination={false}
-            rowHoverable={false}
-          ></User__Main__styledTable>
-        </User__Main__Header>
+      <User__Main__Wrapper
+        style={{backgroundColor:props.wrapperColor}}
+      >  
+        <User__Main__Section>
+        <User__Main__Section__StatisticList>
+          <User__Name>
+            {props.curStatData?.name}
+          </User__Name>
+          <User__Main__Section__StatisticElement>
+            Win rate:{props.curStatData?.win_rate !== "NaN"?Math.round(props.curStatData?.win_rate*10)/10+"%":" No data"}
+          </User__Main__Section__StatisticElement>
+          <User__Main__Section__StatisticElement>
+          Fastest Clear time: {props.curStatData?.min_time !== 2147483647?props.curStatData?.min_time:"No data"}
+          </User__Main__Section__StatisticElement>
+          <User__Main__Section__StatisticElement>
+          Best Score: {props.curStatData?.best_score!== 0?props.curStatData?.best_score:" No data"}
+          </User__Main__Section__StatisticElement>
+          <User__Main__Section__StatisticElement>
+          Max Ascension: {props.curStatData?.max_ascension}
+          </User__Main__Section__StatisticElement>
+        </User__Main__Section__StatisticList>
         <User__Main__cellList>
-          Recent Games
-          {props.curCellData?.map((data) => {
-            return <UsercellLogic data={data}></UsercellLogic>;
+          <User__Main__cellList__subtitle>
+            Recent Games
+          </User__Main__cellList__subtitle>
+          {props.curCellData?.map((data, index) => {
+            return <UsercellLogic data={data} key={index}></UsercellLogic>;
           })}
         </User__Main__cellList>
+        </User__Main__Section>
+        
       </User__Main__Wrapper>
     </User__Wrapper>
   );

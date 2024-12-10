@@ -27,62 +27,98 @@ export const Main__StyledButton = styled(Button)`
   color: #d4ad47;
 
   border-radius: 8px 8px 0px 0px;
+
+
 `;
 
 export const User__Main__Wrapper = styled.div`
   width: 100%;
+  /* min-width: 800px; */
+
   padding: 20px 20px;
 
   background-color: #831317;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  border-radius: 0px 8px 8px 8px;
 `;
 
-export const User__Main__Header = styled.div``;
-
-export const User__Main__Header__Name = styled.div``;
-
-export const User__Main__Header__Playcount = styled.div``;
-
-export const User__Main__styledTable = styled(Table)`
-  //맨 위쪽 줄
-  ::before {
-    width: 100%;
-    height: 1px;
-    content: "";
-    border-top: 2px solid black;
-    transform: translateY(2px);
-  }
-  .ant-table {
-    background-color: transparent !important;
-    border: 0px solid black;
-  }
-
-  .ant-table-thead > tr > th {
-    background-color: transparent !important;
-    border-radius: 0 !important;
-    border-bottom: 2px solid black;
-  }
-  .ant-table-tbody > tr > td {
-    background-color: transparent;
-    border-bottom: 1px solid black;
-  }
-
-  .ant-table-cell {
-    /* color: white !important; */
-    text-shadow: 0.4px 0.4px #111111;
-  }
-  //셀 나누는 칸
-  .ant-table-thead th.ant-table-cell::before {
-    content: "";
-    width: 0px;
-    height: 0% !important;
-  }
-`;
-
-export const User__Main__cellList = styled.div`
+export const User__Main__Header = styled.div`
   width: 100%;
+`;
+
+export const User__Main__Header__Name = styled.div`
+width:100%;
+  font-size: 24px;
+  font-weight: 700;
+`;
+
+export const User__Main__Section = styled.div`
   display: flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items:flex-start;
+
+  gap: 10px;
+  width:100%;
+  /* min-width: 760px; */
+  margin-top: 30px;
+
+  @media screen and (max-width: 800px){
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+export const User__Main__Section__StatisticList = styled.div`
+  width: 360px;
+  padding: 10px;
+  display:flex;
   flex-direction: column;
+  gap: 10px;
 
   margin-top: 10px;
+
+  background-color: #ffffff;
+  border-radius: 5px;
+  
+`
+
+export const User__Name = styled.div`
+  position: absolute;
+  transform:translateY(-52px) translateX(-11px);
+  
+  font-size:32px;
+  color:#d4ad47;
+`
+
+export const User__Main__Section__StatisticElement = styled.div`
+  
+`
+
+export const User__Main__cellList = styled.div`
+  width: 700px;
+  padding: 10px 30px;
+  display: flex;
+  flex-direction: column;
   gap: 10px;
+
+  margin-top: 10px;
+  
+  background-color: #ffffff;
+  border-radius:5px;
+
+  @media screen and (max-width: 800px){
+    width:340px;
+  }
+`;
+
+export const User__Main__cellList__subtitle = styled.div`
+  font-size: 1.5em;
+  font-weight: 700;
+
+  margin-bottom: 10px;
 `;

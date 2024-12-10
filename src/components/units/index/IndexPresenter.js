@@ -10,6 +10,7 @@ import {
   Index__Element__Subtitle,
   Index__Element_BtnContainer,
   Index__StyledButton,
+  Index__Element__statistics
 } from "./IndexStyles";
 
 const columns = [
@@ -31,31 +32,11 @@ const columns = [
   },
 ];
 
-//임시 데이터 배열
-const Data = [
-  { key: "1", name: "Strike", rate: 100.0 },
-  { key: "2", name: "Streamline", rate: 24.3 },
-  { key: "3", name: "Sweeping Beam", rate: 22.1 },
-  { key: "4", name: "Cold Snap", rate: 21.1 },
-  { key: "5", name: "Go for the Eyes", rate: 18.1 },
-  { key: "6", name: "Rebound", rate: 14.1 },
-  { key: "7", name: "Beam Cell", rate: 12.1 },
-  { key: "8", name: "Ball Lightning", rate: 10.1 },
-];
-
-const Data2 = [
-  { key: "1", name: "a", rate: 100.0 },
-  { key: "2", name: "b", rate: 24.3 },
-  { key: "3", name: "c Beam", rate: 22.1 },
-  { key: "4", name: "Cold d", rate: 21.1 },
-  { key: "5", name: "Go f the g", rate: 18.1 },
-  { key: "6", name: "e", rate: 14.1 },
-  { key: "7", name: "Beam h", rate: 12.1 },
-  { key: "8", name: "Ball i", rate: 10.1 },
-];
 
 export default function IndexUI(props) {
   //JS Section
+  const Character_array = ["Ironclad","Silent","Defect","Watcher"];
+  
 
   //HTML Section
   return (
@@ -66,15 +47,20 @@ export default function IndexUI(props) {
         </Index__FileInput>
         <Index__FileHidden
           type="file"
-          accept=".json"
           id="input-file"
           onChange={props.hfc}
+          multiple
         ></Index__FileHidden>
       </Index__Form>
       <Index__Title_Stat>Statistics Online</Index__Title_Stat>
       <Index__Statistics__container>
         <Index__Statistics__element style={{ backgroundColor: props.lb }}>
-          <Index__Element__Subtitle>Card PickRate</Index__Element__Subtitle>
+          <Index__Element__Subtitle>
+            {Character_array[props.LChar]}<br></br>Card PickRate
+            </Index__Element__Subtitle>
+            <Index__Element__statistics>
+              PickRate: {Math.round((props.LCharData?.[0]||0)*10)/10}% WinRate: {Math.round((props.LCharData?.[1]||0)*10)/10}%
+            </Index__Element__statistics>
           <Index__Element_BtnContainer>
             <Index__StyledButton
               style={{ backgroundColor: "#831317" }}
@@ -102,39 +88,27 @@ export default function IndexUI(props) {
               Watcher
             </Index__StyledButton>
           </Index__Element_BtnContainer>
-          <Index__Element_BtnContainer>
-            <Index__StyledButton
-              style={{ backgroundColor: "#99CDF2", borderColor: "#99CDF2" }}
-            >
-              Floor 1
-            </Index__StyledButton>
-            <Index__StyledButton
-              style={{ backgroundColor: "#99CDF2", borderColor: "#99CDF2" }}
-            >
-              Floor 2
-            </Index__StyledButton>
-            <Index__StyledButton
-              style={{ backgroundColor: "#99CDF2", borderColor: "#99CDF2" }}
-            >
-              Floor 3
-            </Index__StyledButton>
-          </Index__Element_BtnContainer>
+          
           <Index__Table
             columns={columns}
-            dataSource={Data}
+            dataSource={props.curPick}
             pagination={false}
             rowHoverable={false}
           ></Index__Table>
         </Index__Statistics__element>
         <Index__Statistics__element style={{ backgroundColor: props.rb }}>
-          <Index__Element__Subtitle>Card WinRate</Index__Element__Subtitle>
+          <Index__Element__Subtitle>
+          {Character_array[props.RChar]} <br></br>Card WinRate</Index__Element__Subtitle>
+          <Index__Element__statistics>
+          PickRate: {Math.round((props.RCharData?.[0]||0)*10)/10}% WinRate: {Math.round((props.RCharData?.[1]||0)*10)/10}%
+          </Index__Element__statistics>
           <Index__Element_BtnContainer>
             <Index__StyledButton
               style={{ backgroundColor: "#831317" }}
               // 함수 하나로 setlb, setData 처리 예정
               onClick={() => props.setrchar(0)}
             >
-                IronClad
+                IronClad
             </Index__StyledButton>
             <Index__StyledButton
               style={{ backgroundColor: "#3B820E" }}
@@ -156,25 +130,11 @@ export default function IndexUI(props) {
             </Index__StyledButton>
           </Index__Element_BtnContainer>
           <Index__Element_BtnContainer>
-            <Index__StyledButton
-              style={{ backgroundColor: "#99CDF2", borderColor: "#99CDF2" }}
-            >
-              Floor 1
-            </Index__StyledButton>
-            <Index__StyledButton
-              style={{ backgroundColor: "#99CDF2", borderColor: "#99CDF2" }}
-            >
-              Floor 2
-            </Index__StyledButton>
-            <Index__StyledButton
-              style={{ backgroundColor: "#99CDF2", borderColor: "#99CDF2" }}
-            >
-              Floor 3
-            </Index__StyledButton>
+            
           </Index__Element_BtnContainer>
           <Index__Table
             columns={columns}
-            dataSource={Data}
+            dataSource={props.curWin}
             pagination={false}
             rowHoverable={false}
           ></Index__Table>

@@ -22,7 +22,7 @@ export default function HeaderLogic() {
 
   const items__right = [
     {
-      label: "Log in",
+      label: <a href = "/login">Log in</a>,
       key: "Login",
       // icon: <MailOutlined />,
     },

@@ -8,7 +8,7 @@ export const Header__Wrapper = styled.div`
   flex-direction: column;
 `;
 
-export const Header__Logo = styled.div`
+export const Header__Logo = styled.a`
   width: 100%;
   height: 50px;
   padding-left: 20px;
